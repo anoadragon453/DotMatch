@@ -14,23 +14,25 @@ using UnityEngine;
 
 	public class Conversion
 	{
-		public Convert factor;
-		private float workWidth = 1434;
-		private float workHeight = 539/2;
-		public Conversion (float screenHeight, float screenWidth)
+
+
+		public Conversion ()
 		{
 		//ssssss
-			factor = new Convert(screenHeight/2, screenWidth/2);
+			
 		}
 
-		public Vector3 makeFixedPoint(Vector3 screenPoint){
-			float xWorkDist = workWidth - screenPoint.x;
+		public static Vector3 makeFixedPoint(Vector3 screenPoint){
+			float workWidth = 18;
+			float workHeight = 8;
+			Convert factor = new Convert (Screen.height / 2, Screen.width / 2);
+			float xWorkDist = screenPoint.x;
 
-			float xRatio = 1- xWorkDist / workWidth;
+			float xRatio =  1 - xWorkDist / workWidth;
 			Debug.Log (xRatio);
-			float xFixed = factor.camHeight - xRatio * factor.camHeight;
+			float xFixed = factor.camWidth - xRatio * factor.camWidth;
 
-			float yWorkDist = workHeight - screenPoint.y;
+			float yWorkDist =screenPoint.y;
 			float yRatio = 1-yWorkDist / workHeight;
 			float yFixed = factor.camHeight - yRatio * factor.camHeight;
 
