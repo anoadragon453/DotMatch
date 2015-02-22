@@ -8,14 +8,14 @@ public class scoreCounter : MonoBehaviour {
 
 
 	void Start () {
-		Conversion conv = new Conversion (Screen.height, Screen.width);
+
 
 		Debug.Log (transform.position);
 		score = 0;
 
 	
 		transform.localScale = new Vector3 (Screen.height / 16, Screen.height / 16, 0);
-		transform.position = conv.makeFixedPoint (transform.position);
+		transform.position = Conversion.makeFixedPoint (transform.position);
 		Debug.Log (transform.position);
 
 	}

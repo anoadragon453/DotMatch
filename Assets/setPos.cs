@@ -11,7 +11,7 @@ public class setPos : MonoBehaviour {
 	//hieght: 539
 	void Start () {
 //		camToScreen = new Convert (Screen.height, Screen.width);
-
+		//transform.position = Conversion.makeFixedPoint (transform.position);
 		//Debug.Log (Camera.main.ScreenToWorldPoint(new Vector3(0,0,0)));
 		Camera.main.orthographicSize = Screen.height / 2;
 		//transform.localScale = new Vector3 (Screen.height / 16, Screen.height / 16, 0);
@@ -29,9 +29,7 @@ public class setPos : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
-			Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-		}
+	
 
 	
 	}

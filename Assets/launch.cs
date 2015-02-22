@@ -7,7 +7,13 @@ public class launch : MonoBehaviour {
 	public GameObject response;
 	void Start () {
 		color = ObjectName ();
-		//transform.localScale = new Vector3 (Screen.height / 16, Screen.height / 16, 0);
+		transform.position = Conversion.makeFixedPoint (transform.position);
+		transform.localScale = new Vector3 (Screen.height / 16, Screen.height / 16, 0);
+		Debug.Log ("launch pos" + transform.position);
+
+		Debug.Log ("sphere colllider" + GetComponent<CircleCollider2D> ().transform.position);
+
+	
 	}
 
 	string ObjectName(){
@@ -17,15 +23,17 @@ public class launch : MonoBehaviour {
 		return color;
 	}
 	void OnMouseDown(){
+		//Debug.Log ("clciked" + Input.mousePosition);
 		Vector3 pos = new Vector3 (transform.position.x, transform.position.y, 10);
-		GameObject resp = (GameObject)Instantiate(response, pos , transform.rotation);
+		GameObject resp = (GameObject)Instantiate(response, transform.position , transform.rotation);
 		resp.name =  color + "Response";
-		Debug.Log (resp.name);
+		//Debug.Log (resp.name);
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	
 
 
 	}

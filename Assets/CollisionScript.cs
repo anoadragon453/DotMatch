@@ -6,9 +6,10 @@ public class CollisionScript : MonoBehaviour {
 
 	string color;
 	void Start () {
-		rigidbody.AddForce (new Vector3 (-900, 0, 0));
-		color = ObjectName (this.name,"opp");
-		//transform.localScale = new Vector3 (Screen.height / 16, Screen.height / 16, 0);
+		rigidbody2D.AddForce (Conversion.makeFixedPoint(new Vector3 (-300, 0, 0)));
+		//this.name = ObjectName (this.name,"(Clone)");
+		color = ObjectName (this.name, "Response");
+	
 	
 	}
 	string ObjectName(string name, string addon){
@@ -18,16 +19,23 @@ public class CollisionScript : MonoBehaviour {
 		return color;
 	}
 
-	void OnCollisionEnter(Collision col){
-		string responseColor = ObjectName (col.gameObject.name, "Response");
-		if (responseColor.Equals (color)) {
-			Destroy (gameObject);
-			scoreCounter.score++;
+	void OnCollisionEnter2D(Collision2D col){
+	
+
+		//Debug.Log (Response.placed);
+		string responseColor = ObjectName (col.gameObject.name, "opp");
+
+
+			if (responseColor.Equals (color)) {
+				//Debug.Log ("Match");
+				Destroy (gameObject);
+				scoreCounter.score++;
+			}
+			Destroy (col.gameObject);
+			if (gameObject)
+				rigidbody2D.AddForce (Conversion.makeFixedPoint (new Vector3 (-300, 0, 0)));
 		}
-		Destroy (col.gameObject);
-		if (gameObject)
-			rigidbody.AddForce (-900, 0, 0);
-	}
+
 	
 	// Update is called once per frame
 	void Update () {

@@ -50,13 +50,13 @@
      <Compile Include="Assets\Conversion.cs" />
      <Compile Include="Assets\Convert.cs" />
      <Compile Include="Assets\Response.cs" />
-     <Compile Include="Assets\SetResolution.cs" />
      <Compile Include="Assets\UserInteraction.cs" />
+     <Compile Include="Assets\adaptPos.cs" />
      <Compile Include="Assets\generate.cs" />
      <Compile Include="Assets\launch.cs" />
+     <Compile Include="Assets\moveOpp.cs" />
      <Compile Include="Assets\scoreCounter.cs" />
      <Compile Include="Assets\setPos.cs" />
-     <Compile Include="Assets\test.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
  </Reference>
