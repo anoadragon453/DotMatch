@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI-Backing.cs" />
      <Compile Include="Assets\CollisionScript.cs" />
      <Compile Include="Assets\Conversion.cs" />
      <Compile Include="Assets\Convert.cs" />

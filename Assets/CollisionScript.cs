@@ -12,6 +12,7 @@ public class CollisionScript : MonoBehaviour {
 	
 	
 	}
+
 	string ObjectName(string name, string addon){
 
 		int index = name.IndexOf (addon);
