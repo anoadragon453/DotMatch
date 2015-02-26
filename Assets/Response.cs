@@ -23,12 +23,20 @@ public class Response : MonoBehaviour {
 		color = ObjectName (this.name, "Response");
 
 	}
+	/// <summary>
+	/// Raises the mouse down event.
+	/// </summary>
 	
 	void OnMouseDown(){
 	//	Debug.Log ("ypos"+transform.position.y);
 		placed = true;
 		go++;
 	}
+	/// <summary>
+	/// Shoulds the I kill myself.
+	/// </summary>
+	/// <returns><c>true</c>, if I kill myself was shoulded, <c>false</c> otherwise.</returns>
+	/// <param name="pos">Position.</param>
 	bool ShouldIKillMyself(Vector3 pos){
 		float y = pos.y;
 		float maxY = Conversion.makeFixedPoint (new Vector3(0, -4, 0)).y;
@@ -37,12 +45,23 @@ public class Response : MonoBehaviour {
 			return true;
 		return false;
 	}
+	/// <summary>
+	/// Objects the name.
+	/// </summary>
+	/// <returns>The name.</returns>
+	/// <param name="name">Name.</param>
+	/// <param name="addon">Addon.</param>
 	string ObjectName(string name, string addon){
 		
 		int index = name.IndexOf (addon);
 		string color = name.Remove (index);
 		return color;
 	}
+	/// <summary>
+	/// Determines the lane.
+	/// </summary>
+	/// <returns>The lane.</returns>
+	/// <param name="pos">Position.</param>
 	Vector3 determineLane(Vector3 pos){
 		//pos = Conversion.makeFixedPoint (pos);
 		float y = pos.y;
@@ -56,6 +75,11 @@ public class Response : MonoBehaviour {
 		return btm;
 		//return lane;
 	}
+	/// <summary>
+	/// Raises the collision enter2 d event.
+	/// </summary>
+	/// <param name="col">Col.</param>
+
 	void OnCollisionEnter2D(Collision2D col){
 		if (placed) {
 		
@@ -76,6 +100,9 @@ public class Response : MonoBehaviour {
 
 	
 	// Update is called once per frame
+	/// <summary>
+	/// Update this instance.
+	/// </summary>
 	void Update () {
 
 		if (!placed) {

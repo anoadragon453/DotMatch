@@ -184,4 +184,12 @@
  .DS_Store
  
  # Server.dat
+<<<<<<< HEAD
+<<<<<<< HEAD
  server.dat
+=======
+ server.dat
+>>>>>>> Master
+=======
+ server.dat
+>>>>>>> master
