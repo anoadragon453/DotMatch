@@ -55,6 +55,7 @@ public class generate : MonoBehaviour {
 			return mid;
 		return btm;
 	}
+	//testing
 	// Update is called once per frame
 	void Update () {
 		int n = 0;
