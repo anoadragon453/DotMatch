@@ -16,6 +16,11 @@ public class generate : MonoBehaviour {
 		Debug.Log (runPolyAI (15));
 	
 	}
+	/// <summary>
+	/// Runs the poly AI.
+	/// </summary>
+	/// <returns>The poly A.</returns>
+	/// <param name="time">Time.</param>
 
 
 	float runPolyAI(float time){
