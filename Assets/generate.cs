@@ -51,7 +51,7 @@ public class generate : MonoBehaviour {
 		return btm;
 	}
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 		int n = 0;
 		if (cont % 60 == 0) {
 			Debug.Log("cont" + cont);
@@ -70,6 +70,6 @@ public class generate : MonoBehaviour {
 		}
 		cont++;
 	
-	}
+	}*/
 }
 
