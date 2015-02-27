@@ -7,7 +7,7 @@ public class UserInteraction : MonoBehaviour {
 	bool mouseClicksStarted = false;
 	int mouseClicks = 0;
 	float mouseTimerLimit = .2f;
-	bool doubleClickInitiated = false;
+	bool singleClickInitiated = false;
 
 	// --- Determine whether this is for user or AI Objects --- //
 	bool isUserObject = true; // Ball will fly to right or left based on this bool
@@ -21,6 +21,10 @@ public class UserInteraction : MonoBehaviour {
 	float minSize = 5f;
 	float shrinkRate = 1.0f;
 	float scale = 48.0f;
+
+	// ------------------- Sprite Variables ------------------- //
+	public Sprite greenColor;
+	public Sprite blueColor;
 	 
 
 	void Start () {
@@ -44,15 +48,24 @@ public class UserInteraction : MonoBehaviour {
 	{
 		if (mouseClicks > 1) {
 			Debug.Log("Double Clicked");
-			doubleClickInitiated = true;
-		} else {
-			Debug.Log("Single Clicked");
 			isMoving = true;
 			temp = new Vector3(movementVelocity,0,0);
 			transform.position += temp;
+		} else {
+			Debug.Log("Single Clicked");
+			switchDotColor();
 		}
 		mouseClicksStarted = false;
 		mouseClicks = 0;
+	}
+
+	private void switchDotColor()
+	{
+		if (gameObject.GetComponent<SpriteRenderer> ().sprite == greenColor as Sprite) {
+			gameObject.GetComponent<SpriteRenderer> ().sprite = blueColor as Sprite;
+		} else {
+			gameObject.GetComponent<SpriteRenderer> ().sprite = greenColor as Sprite;
+		}
 	}
 
 	// Update is called once per frame
@@ -65,10 +78,8 @@ public class UserInteraction : MonoBehaviour {
 		    }
 		}
 
-		if (doubleClickInitiated) {
-			transform.localScale = Vector3.one * scale;
-	     	scale -= shrinkRate * Time.deltaTime * 80.0f; // Since objects are so large in the game space.
-	     	if (scale < minSize) Destroy (gameObject);
+		if (singleClickInitiated) {
+			singleClickInitiated = true;
 		}
 	}
 }
