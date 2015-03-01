@@ -9,6 +9,7 @@ public class generate : MonoBehaviour {
 	Vector3 top = new Vector3(18,5.5f,0);
 	Vector3 mid = new Vector3(18, 2, 0);
 	Vector3 btm = new Vector3(18,-1.5f, 0);
+	int difficulty = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -27,14 +28,14 @@ public class generate : MonoBehaviour {
 		Vector2 term3 = new Vector2 (-0.0003f, 3);
 		Vector2 term2 = new Vector2 (0.012f, 2);
 		Vector2 term1 = new Vector2 (-0.0417f, 1);
-		Vector2 term0 = new Vector2 (0.3f, 0);
+		Vector2 term0 = new Vector2 (0.1f, 0);
 		Vector2[] terms = {term0, term1, term2, term3};
 		float val = 0;
 		foreach (Vector2 term in terms) {
 			float power = (float)System.Math.Pow((double)time, term.y);
 			val += term.x*power;
 		}
-		return val;
+		return 1/val;
 	}
 
 	GameObject getOpp(int rand){
@@ -55,25 +56,28 @@ public class generate : MonoBehaviour {
 			return mid;
 		return btm;
 	}
-	//testing
+	void increaseDifficulty(){
+		difficulty += 5;
+	}
 	// Update is called once per frame
 	void Update () {
-		int n = 0;
-		if (cont % 60 == 0) {
-			Debug.Log("cont" + cont);
-			 n = (int)System.Math.Ceiling(runPolyAI (cont/60));
-			Debug.Log ("n val" + n);
+		if (cont == 300) {
+			increaseDifficulty();
+			cont = 0;
 		}
-		if (cont % 60 == 0) {
-			for(int i = 0; i < n; i++){
-			int color = UnityEngine.Random.Range(0,2);
-			int posRand = UnityEngine.Random.Range(0,3);
-			GameObject opp = getOpp(color);
-			Vector3 pos = getPos(posRand);
-			Instantiate(opp,pos,transform.rotation);
+		int rate = (int)runPolyAI (difficulty);
+		if (cont % 60*rate == 0) {
+
+
+			int color = UnityEngine.Random.Range (0, 2);
+			int posRand = UnityEngine.Random.Range (0, 3);
+			GameObject opp = getOpp (color);
+			Vector3 pos = getPos (posRand);
+			Instantiate (opp, pos, transform.rotation);
+			Debug.Log("GENERATE rate:" + 60*rate + "cont:" + cont);
 			//cont = 0;
-			}
 		}
+		
 		cont++;
 	
 	}
