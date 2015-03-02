@@ -9,7 +9,7 @@ public class generate : MonoBehaviour {
 	Vector3 top = new Vector3(18,5.5f,0);
 	Vector3 mid = new Vector3(18, 2, 0);
 	Vector3 btm = new Vector3(18,-1.5f, 0);
-	int rate = 250;
+	int rate = 600;
 	int difficulty = 0;
 
 	// Use this for initialization
@@ -26,9 +26,9 @@ public class generate : MonoBehaviour {
 
 
 	float runPolyAI(float time){
-		Vector2 term3 = new Vector2 (-0.0003f, 3);
-		Vector2 term2 = new Vector2 (0.012f, 2);
-		Vector2 term1 = new Vector2 (-0.0417f, 1);
+		Vector2 term3 = new Vector2 (-0.00003f, 3);
+		Vector2 term2 = new Vector2 (0.0012f, 2);
+		Vector2 term1 = new Vector2 (-0.00417f, 1);
 		Vector2 term0 = new Vector2 (0.3f, 0);
 		Vector2[] terms = {term0, term1, term2, term3};
 		float val = 0;
@@ -64,7 +64,7 @@ public class generate : MonoBehaviour {
 	void Update () {
 		if (cont == 300) {
 			increaseDifficulty();
-			cont = 0;
+			cont = 1;
 			rate = (int)(60*runPolyAI(difficulty));
 		}
 
