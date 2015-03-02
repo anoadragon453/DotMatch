@@ -9,7 +9,7 @@ public class generate : MonoBehaviour {
 	Vector3 top = new Vector3(18,5.5f,0);
 	Vector3 mid = new Vector3(18, 2, 0);
 	Vector3 btm = new Vector3(18,-1.5f, 0);
-	int rate = 3;
+	int rate = 250;
 	int difficulty = 0;
 
 	// Use this for initialization
@@ -65,11 +65,10 @@ public class generate : MonoBehaviour {
 		if (cont == 300) {
 			increaseDifficulty();
 			cont = 0;
-			rate = (int)runPolyAI(difficulty);
+			rate = (int)(60*runPolyAI(difficulty));
 		}
-		if (difficulty > 12)
-			rate = 3;
-		if (cont % (60*rate) == 0) {
+
+		if (cont % rate == 0) {
 
 
 			int color = UnityEngine.Random.Range (0, 2);
