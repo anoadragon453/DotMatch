@@ -10,7 +10,8 @@ public class generate : MonoBehaviour {
 	Vector3 mid = new Vector3(18, 2, 0);
 	Vector3 btm = new Vector3(18,-1.5f, 0);
 	int rate = 600;
-	int difficulty = 0;
+	int difficulty = 20;
+	bool startOpp = true;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +25,11 @@ public class generate : MonoBehaviour {
 	/// </summary>
 	/// <returns>The poly A.</returns>
 	/// <param name="time">Time.</param>
-
+	float runLogAI(float time){
+		float logVal = (float)System.Math.Log (System.Math.Log ((double)(.1f*time)));
+		float val = .5f*logVal+.6891f;
+		return 1/val;
+	}
 
 	float runPolyAI(float time){
 		Vector2 term3 = new Vector2 (-0.00003f, 3);
@@ -61,12 +66,28 @@ public class generate : MonoBehaviour {
 	void increaseDifficulty(){
 		difficulty += 1;
 	}
+	void changeRate(){
+		if (difficulty <= 25)
+			rate = (int)(60 * runPolyAI (difficulty));
+		else {
+			rate = (int)(60 * runLogAI (difficulty));
+			Debug.Log ("RATE:" + rate);
+		}
+	}
 	// Update is called once per frame
 	void Update () {
 		if (cont % 300==0) {
 			increaseDifficulty();
 			cont = 1;
-			rate = (int)(60*runPolyAI(difficulty));
+			changeRate();		
+		}
+		if (cont == 60 && startOpp) {
+			int color = UnityEngine.Random.Range (0, 2);
+			int posRand = UnityEngine.Random.Range (0, 3);
+			GameObject opp = getOpp (color);
+			Vector3 pos = getPos (posRand);
+			Instantiate (opp, pos, transform.rotation);
+			startOpp = false;
 		}
 
 		if (cont % rate == 0) {
