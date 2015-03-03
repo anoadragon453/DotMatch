@@ -10,7 +10,7 @@ public class generate : MonoBehaviour {
 	Vector3 mid = new Vector3(18, 2, 0);
 	Vector3 btm = new Vector3(18,-1.5f, 0);
 	int rate = 600;
-	int difficulty = 20;
+	int difficulty = 0;
 	bool startOpp = true;
 	/// <summary>
 	/// /
@@ -78,14 +78,9 @@ public class generate : MonoBehaviour {
 		}
 	}
 	// Update is called once per frame
-<<<<<<< HEAD
-	/*void Update () {
-		int n = 0;
-		if (cont % 60 == 0) {
-			Debug.Log("cont" + cont);
-			 n = (int)System.Math.Ceiling(runPolyAI (cont/60));
-			Debug.Log ("n val" + n);
-=======
+
+
+
 	void Update () {
 		if (cont % 300==0) {
 			increaseDifficulty();
@@ -99,7 +94,6 @@ public class generate : MonoBehaviour {
 			Vector3 pos = getPos (posRand);
 			Instantiate (opp, pos, transform.rotation);
 			startOpp = false;
->>>>>>> origin/Issue-1-AI-Branch
 		}
 
 		if (cont % rate == 0) {
@@ -110,12 +104,12 @@ public class generate : MonoBehaviour {
 			GameObject opp = getOpp (color);
 			Vector3 pos = getPos (posRand);
 			Instantiate (opp, pos, transform.rotation);
-			Debug.Log("GENERATE rate:" + rate + "cont:" + cont + "difficulty:" + difficulty);
+			//Debug.Log("GENERATE rate:" + rate + "cont:" + cont + "difficulty:" + difficulty);
 			//cont = 0;
 		}
 		
 		cont++;
 	
-	}*/
+	}
 }
 
