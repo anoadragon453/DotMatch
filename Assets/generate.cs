@@ -12,6 +12,9 @@ public class generate : MonoBehaviour {
 	int rate = 600;
 	int difficulty = 20;
 	bool startOpp = true;
+	/// <summary>
+	/// /
+	/// </summary>
 
 	// Use this for initialization
 	void Start () {
