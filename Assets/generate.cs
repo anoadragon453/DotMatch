@@ -15,7 +15,8 @@ public class generate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		Debug.Log (runPolyAI (15));
+	
+		//Debug.Log (runPolyAI (15));
 	
 	}
 	/// <summary>
@@ -58,11 +59,11 @@ public class generate : MonoBehaviour {
 		return btm;
 	}
 	void increaseDifficulty(){
-		difficulty += 3;
+		difficulty += 1;
 	}
 	// Update is called once per frame
 	void Update () {
-		if (cont == 300) {
+		if (cont % 300==0) {
 			increaseDifficulty();
 			cont = 1;
 			rate = (int)(60*runPolyAI(difficulty));
